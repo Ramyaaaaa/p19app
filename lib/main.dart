@@ -3,23 +3,7 @@ import 'eventCard.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Prayatna',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(title: "Prayatna '19"),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  HomePage({Key key, this.title}) : super(key: key);
-  final String title;
-  final events = <Event>[
+final events = <Event>[
     Event(
       title: 'Mini Placement',
       tagline: 'Do you have what it takes?',
@@ -47,7 +31,52 @@ class HomePage extends StatelessWidget {
       contact: '96773207736',
       image: 'assets/images/code-n-chaos.jpg',
     ),
+    Event(
+      title: 'Amazon Intern Hiring',
+      tagline: 'Clash of the coders',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 302',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/amazon-intern-hiring.jpg',
+    ),
+    Event(
+      title: "Code 'N Chaos",
+      tagline: 'Clash of the coders',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 302',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/amazon-n-chaos.jpg',
+    ),
+    Event(
+      title: "DB Dwellers",
+      tagline: 'Clash of the coders',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 302',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/db-dwellers.jpg',
+    )
   ];
+  
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Prayatna',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomePage(title: "Prayatna '19"),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  HomePage({Key key, this.title}) : super(key: key);
+  final String title;
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
