@@ -79,11 +79,15 @@ class _FlipBoxBarState extends State<FlipBoxBar> with TickerProviderStateMixin {
 
   /// When tapped, reverse the last chosen index and flip the chosen one.
   void _onTapped(int index) {
+    
     _controllers[indexChosen].reverse();
     indexChosen = index;
     _controllers[indexChosen].forward();
-    widget.onIndexChanged(index);
-  }
+
+    Future.delayed(const Duration(seconds: 1), () => 
+       widget.onIndexChanged(index)
+    );
+     }
 }
 
 class FlipBarItem {

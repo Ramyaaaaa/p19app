@@ -5,7 +5,7 @@ import 'main.dart';
 import 'pageEntry.dart';
 import 'flip_box.dart';
 import 'flip_box_bar.dart';
-
+import 'resultsPage.dart';
 class EventDetails extends MaterialPageRoute {
   EventDetails(Event event)
       : super(
@@ -28,7 +28,12 @@ class Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Content = Container(
+    final Content = 
+    // Hero(
+            // tag:"hi",
+            // child: 
+          
+      Container(
       height: MediaQuery.of(context).size.height,
 
       width: MediaQuery.of(context).size.width,
@@ -41,6 +46,7 @@ class Details extends StatelessWidget {
           child:
           Column(
         children: <Widget>[
+          
 
           new Image(
                     image: new AssetImage(event.image),
@@ -101,6 +107,7 @@ class Details extends StatelessWidget {
         ],
       )),
     );
+  
 
 
 
@@ -108,30 +115,36 @@ class Details extends StatelessWidget {
 
   final ValueNotifier currentPageNotifier = ValueNotifier<int>(0);
 
+    int curInd;
+    
     return new Scaffold(
       appBar: AppBar(
         title: Text("Prayatna '19", style: TextStyle(color: Colors.black))),
 
-      body: Hero(
-        tag: "hi",
-        child : Stack(
+      body:
+      //  Hero(
+        // tag: "hi",
+        // child :
+         Stack(
           children: <Widget>[
             PageView.builder(
               onPageChanged: (int index) {
-                currentPageNotifier.value = index;
+                print(index);
+                currentPageNotifier.value = int.parse(event.index);
               },
               controller: PageController(
-                initialPage: currentPageNotifier.value,
+                initialPage: int.parse(event.index),
               ),
-              itemBuilder: (BuildContext buildContext, int index) =>
-                  PageEntryWidget(entry: events[index]),
-              itemCount: events.length,
+              itemBuilder: (BuildContext buildContext, int index) {
+                  return PageEntryWidget(entry: events[index%events.length]);
+              },
+              // itemCount: events.length,
             ),
           
           ],
-        )),
-
-        bottomNavigationBar: FlipBoxBar(
+        ),
+        // ),
+          bottomNavigationBar: FlipBoxBar(
         items: [
           FlipBarItem(
               icon: new Icon(IconData(0xe0b0, fontFamily: 'MaterialIcons')),
@@ -149,13 +162,26 @@ class Details extends StatelessWidget {
           if (index == 0) {
             print("hi");
             String contact = event.contact;
-            if (await canLaunch("tel:7358527747")) {
-              await launch(contact);
+
+            if (await canLaunch("tel://"+contact)) {
+              await launch("tel://"+contact);
             }
             } else if(index == 1){
-              //results page
-              print("bye");
+
+
+              
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return new MaterialApp(
+                          title: event.title,
+                          home: new SecondPage(
+                              title: event.title,
+                              id: event.title),
+                        );
+                      }));
+                    
             }
+              //results page
 
         }
 

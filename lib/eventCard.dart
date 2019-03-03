@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'eventDetails.dart';
 class Event {
-  final String title, tagline, time, venue, description, contact, image;
+  final String title, tagline, time, venue, description, contact, image,index;
   Event({
     this.title,
     this.tagline,
@@ -10,6 +10,7 @@ class Event {
     this.description,
     this.contact,
     this.image,
+    this.index,
   });
 }
 
@@ -42,9 +43,11 @@ class EventCard extends StatelessWidget {
           children: <Widget>[
             SizedBox(
               height: height,
-              child: Hero(
-                tag : event.title,
-              child : Card(
+              child: 
+              // Hero(
+                // tag : "hi",
+              // child : 
+              Card(
                 // This ensures that the Card's children (including the ink splash) are clipped correctly.
                 clipBehavior: Clip.antiAlias,
                 shape: shape,
@@ -64,7 +67,7 @@ class EventCard extends StatelessWidget {
                   child: EventContent(event: event),
                 ),
               ),
-            )),
+            ),
           ],
         ),
       ),

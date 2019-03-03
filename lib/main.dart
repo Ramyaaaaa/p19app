@@ -12,6 +12,7 @@ final events = <Event>[
       description: 'Hello world Hello world Hello world Hello world',
       contact: '96773207736',
       image: 'assets/images/mini-placement.png',
+      index: '0'
     ),
     Event(
       title: 'OSPC',
@@ -21,6 +22,7 @@ final events = <Event>[
       description: 'Hello world Hello world Hello world Hello world',
       contact: '96773207736',
       image: 'assets/images/ospc.png',
+      index: '1'
     ),
     Event(
       title: "Code 'N Chaos",
@@ -30,6 +32,7 @@ final events = <Event>[
       description: 'Hello world Hello world Hello world Hello world',
       contact: '96773207736',
       image: 'assets/images/code-n-chaos.jpg',
+      index: '2'
     ),
     Event(
       title: 'Amazon Intern Hiring',
@@ -39,16 +42,9 @@ final events = <Event>[
       description: 'Hello world Hello world Hello world Hello world',
       contact: '96773207736',
       image: 'assets/images/amazon-intern-hiring.jpg',
+      index: '3'
     ),
-    Event(
-      title: "Code 'N Chaos",
-      tagline: 'Clash of the coders',
-      time: 'Mar 8, 9am - 12pm',
-      venue: 'LHC 302',
-      description: 'Hello world Hello world Hello world Hello world',
-      contact: '96773207736',
-      image: 'assets/images/amazon-n-chaos.jpg',
-    ),
+    
     Event(
       title: "DB Dwellers",
       tagline: 'Clash of the coders',
@@ -57,6 +53,7 @@ final events = <Event>[
       description: 'Hello world Hello world Hello world Hello world',
       contact: '96773207736',
       image: 'assets/images/db-dwellers.jpg',
+      index: '4'
     )
   ];
   

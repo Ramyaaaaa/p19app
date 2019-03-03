@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 import 'eventCard.dart';
 import 'dart:async';
-
-
-
-
  
 class PageEntryWidget extends StatefulWidget {
   final Event entry;
@@ -31,9 +27,9 @@ class _PageEntryWidgetState extends State<PageEntryWidget> {
         scrollToEnd(milliseconds: 100);
 
         return 
-        // Hero(
-        //   tag : "hi",
-        //   child:
+        Hero(
+           tag : "hi",
+          child:
           Stack(
           children: <Widget>[
             
@@ -96,7 +92,7 @@ class _PageEntryWidgetState extends State<PageEntryWidget> {
                   fontSize: 18.0, color: Color.fromRGBO(58, 66, 86, 1.0))),
             ],
           ))],
-        );
+        ));
       });
 
   void scrollToEnd({int milliseconds}) {
