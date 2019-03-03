@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'eventDetails.dart';
+
 class Event {
   final String title, tagline, time, venue, description, contact, image;
   Event({
@@ -15,16 +16,15 @@ class Event {
 
 class EventCard extends StatelessWidget {
   final Event event;
-  final ShapeBorder shape;
-// const RoundedRectangleBorder(
-//                   borderRadius: BorderRadius.only(
-//                     topLeft: Radius.circular(16.0),
-//                     topRight: Radius.circular(16.0),
-//                     bottomLeft: Radius.circular(2.0),
-//                     bottomRight: Radius.circular(2.0),
-//                   ),
-// );
-  EventCard({Key key, @required this.event, this.shape})
+  final ShapeBorder shape = const RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(12.0),
+      topRight: Radius.circular(12.0),
+      bottomLeft: Radius.circular(12.0),
+      bottomRight: Radius.circular(12.0),
+    ),
+  );
+  EventCard({Key key, @required this.event})
       : assert(event != null),
         super(key: key);
 
@@ -42,19 +42,14 @@ class EventCard extends StatelessWidget {
           children: <Widget>[
             SizedBox(
               height: height,
-              child: Hero(
-                tag : event.title,
-              child : Card(
+              child: Card(
                 // This ensures that the Card's children (including the ink splash) are clipped correctly.
                 clipBehavior: Clip.antiAlias,
                 shape: shape,
                 child: InkWell(
                   onTap: () {
-                    Navigator
-                          .of(context)
-                          .push( new EventDetails(event));
-                            
-                          
+                    print('Card was tapped');
+                    Navigator.push(context, EventDetails(event));
                   },
                   // Generally, material cards use onSurface with 12% opacity for the pressed state.
                   splashColor:
@@ -64,7 +59,7 @@ class EventCard extends StatelessWidget {
                   child: EventContent(event: event),
                 ),
               ),
-            )),
+            ),
           ],
         ),
       ),
