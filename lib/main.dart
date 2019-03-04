@@ -1,62 +1,8 @@
 import 'package:flutter/material.dart';
 import 'eventCard.dart';
+import 'eventDetails.dart';
 
 void main() => runApp(MyApp());
-
-final events = <Event>[
-    Event(
-      title: 'Mini Placement',
-      tagline: 'Do you have what it takes?',
-      time: 'Mar 8, 9am - 12pm',
-      venue: 'LHC 301',
-      description: 'Hello world Hello world Hello world Hello world',
-      contact: '96773207736',
-      image: 'assets/images/mini-placement.png',
-      index: '0'
-    ),
-    Event(
-      title: 'OSPC',
-      tagline: 'Clash of the coders',
-      time: 'Mar 8, 9am - 12pm',
-      venue: 'LHC 302',
-      description: 'Hello world Hello world Hello world Hello world',
-      contact: '96773207736',
-      image: 'assets/images/ospc.png',
-      index: '1'
-    ),
-    Event(
-      title: "Code 'N Chaos",
-      tagline: 'Rise above the rest',
-      time: 'Mar 9, 9am - 12pm',
-      venue: 'LHC 303',
-      description: 'Hello world Hello world Hello world Hello world',
-      contact: '96773207736',
-      image: 'assets/images/code-n-chaos.jpg',
-      index: '2'
-    ),
-    Event(
-      title: 'Amazon Intern Hiring',
-      tagline: 'Clash of the coders',
-      time: 'Mar 8, 9am - 12pm',
-      venue: 'LHC 302',
-      description: 'Hello world Hello world Hello world Hello world',
-      contact: '96773207736',
-      image: 'assets/images/amazon-intern-hiring.jpg',
-      index: '3'
-    ),
-    
-    Event(
-      title: "DB Dwellers",
-      tagline: 'Clash of the coders',
-      time: 'Mar 8, 9am - 12pm',
-      venue: 'LHC 302',
-      description: 'Hello world Hello world Hello world Hello world',
-      contact: '96773207736',
-      image: 'assets/images/db-dwellers.jpg',
-      index: '4'
-    )
-  ];
-  
 
 class MyApp extends StatelessWidget {
   @override
@@ -74,32 +20,163 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   HomePage({Key key, this.title}) : super(key: key);
   final String title;
+
+  final techEvents = <Event>[
+    Event(
+      title: 'Mini Placement',
+      tagline: 'Do you have what it takes?',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 301',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/mini-placement.png',
+      teamSize: 'Individual participation',
+    ),
+    Event(
+      title: 'OSPC',
+      tagline: 'Clash of the coders',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 302',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/ospc.png',
+      teamSize: 'Max. 2 per team',
+    ),
+    Event(
+      title: "Code 'N Chaos",
+      tagline: 'Rise above the rest',
+      time: 'Mar 9, 9am - 12pm',
+      venue: 'LHC 303',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/code-n-chaos.jpg',
+      teamSize: 'Max. 2 per team',
+    ),
+    Event(
+      title: "DB Dwellers",
+      tagline: 'Select * from the universe',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 304',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/db-dwellers.jpg',
+      teamSize: 'Max. 2 per team',
+    ),
+  ];
+
+  final nonTechEvents = <Event>[
+    Event(
+      title: 'Kaleidoscope',
+      tagline: 'Do you have what it takes?',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 301',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/kaleidoscope.jpg',
+      teamSize: 'Individual participation',
+    ),
+    Event(
+      title: 'Math O Mania',
+      tagline: 'Clash of the coders',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 302',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/math-o-mania.jpg',
+      teamSize: 'Max. 2 per team',
+    ),
+    Event(
+      title: "Connexions",
+      tagline: 'Rise above the rest',
+      time: 'Mar 9, 9am - 12pm',
+      venue: 'LHC 303',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/connexions.png',
+      teamSize: 'Max. 2 per team',
+    ),
+    Event(
+      title: "Treasure Hunt",
+      tagline: 'Select * from the universe',
+      time: 'Mar 8, 9am - 12pm',
+      venue: 'LHC 304',
+      description: 'Hello world Hello world Hello world Hello world',
+      contact: '96773207736',
+      image: 'assets/images/treasure-hunt.jpg',
+      teamSize: 'Max. 3 per team',
+    ),
+  ];
+
+  final String techEventsTitle = 'Tech Events',
+      nonTechEventsTitle = 'Non Tech Events';
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-    final TextStyle titleStyle = theme.textTheme.headline;
-    return Scaffold(
-      body: new CustomScrollView(slivers: <Widget>[
-        SliverAppBar(
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
           title: Text(
             this.title,
-            style: titleStyle,
           ),
-          floating: true,
-          snap: true,
-          forceElevated: true,
-        ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              return EventCard(
-                event: events[index],
-              );
-            },
-            childCount: events.length,
+          bottom: TabBar(
+            tabs: [
+              new Tab(
+                text: techEventsTitle,
+              ),
+              new Tab(
+                text: nonTechEventsTitle,
+              ),
+            ],
           ),
         ),
-      ]),
+        body: TabBarView(
+          children: [
+            ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return Hero(
+                  tag: techEvents[index].title,
+                  child: EventCard(
+                    event: techEvents[index],
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        DetailsPageRoute(
+                          techEventsTitle,
+                          techEvents,
+                          index,
+                          showResults: true,
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+              itemCount: techEvents.length,
+            ),
+            ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+                return Hero(
+                  tag: nonTechEvents[index].title,
+                  child: EventCard(
+                    event: nonTechEvents[index],
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        DetailsPageRoute(
+                          nonTechEventsTitle,
+                          nonTechEvents,
+                          index,
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+              itemCount: nonTechEvents.length,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
